@@ -1,6 +1,6 @@
 <div class="row d-flex justify-content-center pt-5 pb-5">
   <form [formGroup]="registrationForm" (ngSubmit)="onSubmit(content)"
-  class="registration-form col-12 col-md-6 d-flex justify-content-center flex-column bg-light-subtle p-5 rounded-4 m-0">
+  class="registration-form col-12 col-md-6 d-flex justify-content-center flex-column bg-transparent p-5 rounded-4 m-0">
     <h2>Zum Kurs anmelden!</h2>
 
     <!-- Name -->
@@ -45,13 +45,13 @@
 
     <!-- Checkbox -->
     <mat-checkbox formControlName="newsletter" class="full-width">
-      Ich möchte den Newsletter abonnieren.
+      <span style="color: orange;">✉</span> Ich möchte den <span style="color: orange;">Newsletter</span> abonnieren.
     </mat-checkbox>
     <br/>
 
     <!-- Button -->
     <button mat-raised-button color="primary" type="submit" [disabled]="registrationForm.invalid">
-      Anmelden
+      Jetzt anmelden
     </button>
   </form>
 
