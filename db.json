@@ -1,0 +1,137 @@
+{
+  "courses": [
+    {
+      "id": "_iL775j",
+      "name": "Schnuppertauchen",
+      "instructor": "Maximilian Tiefgang",
+      "dates": [
+        {
+          "begin": "2024-11-13T17:00:00",
+          "end": "2024-11-13T19:00:00"
+        },
+        {
+          "begin": "2024-11-14T17:00:00",
+          "end": "2024-11-14T19:00:00"
+        }
+      ],
+      "eventLocationId": 1
+    },
+    {
+      "id": "_iL775i",
+      "name": "Reiten",
+      "instructor": "Cowboy Tim",
+      "dates": [
+        {
+          "begin": "2024-11-13T17:00:00",
+          "end": "2024-11-13T19:00:00"
+        },
+        {
+          "begin": "2024-11-14T17:00:00",
+          "end": "2024-11-14T19:00:00"
+        }
+      ],
+      "eventLocationId": 2
+    },
+    {
+      "id": "_iL775a",
+      "name": "Yoga",
+      "instructor": "Manuela Ganzentspannt",
+      "dates": [
+        {
+          "begin": "2024-11-13T17:00:00",
+          "end": "2024-11-13T19:00:00"
+        },
+        {
+          "begin": "2024-11-14T17:00:00",
+          "end": "2024-11-14T19:00:00"
+        }
+      ],
+      "eventLocationId": 3
+    }
+  ],
+  "eventLocations": [
+    {
+      "id": 1,
+      "name": "Schwimmbad Kleines Wien",
+      "address": "Schwimmbadgasse 21, 1220 Wien",
+      "venueByPublicTansport": true
+    },
+    {
+      "id": 2,
+      "name": "Reitclub Amstetten",
+      "address": "Galoppstrecke 1, 3300 Amstetten",
+      "venueByPublicTansport": false
+    },
+    {
+      "id": 3,
+      "name": "Yogastudio Ruheoase",
+      "address": "Schwimmbadgasse 21, 1220 Wien",
+      "venueByPublicTansport": true
+    }
+  ],
+  "registrations": [
+    {
+      "id": 1,
+      "name": "Testuser",
+      "birthdate": "2024-11-13",
+      "courseId": "_iL775j",
+      "newsletter": false
+    },
+    {
+      "name": "Julia Schabasser",
+      "courseId": "_iL775a",
+      "birthdate": "1995-02-23",
+      "newsletter": false,
+      "id": 3
+    },
+    {
+      "name": "Test",
+      "courseId": "_iL775j",
+      "birthdate": "2024-11-04T23:00:00.000Z",
+      "newsletter": true,
+      "id": 6
+    },
+    {
+      "name": "XYZ",
+      "courseId": "_iL775i",
+      "birthdate": "2024-10-02T22:00:00.000Z",
+      "newsletter": true,
+      "id": 7
+    },
+    {
+      "name": "Peter P",
+      "courseId": "_iL775j",
+      "birthdate": "2023-12-31T23:00:00.000Z",
+      "newsletter": false,
+      "id": 8
+    },
+    {
+      "name": "Michi",
+      "courseId": "_iL775i",
+      "birthdate": "2024-07-14T22:00:00.000Z",
+      "newsletter": true,
+      "id": 9
+    },
+    {
+      "name": "sdfg",
+      "courseId": "_iL775j",
+      "birthdate": "2025-01-07T23:00:00.000Z",
+      "newsletter": false,
+      "id": 10
+    },
+    {
+      "name": "weg",
+      "courseId": "_iL775i",
+      "birthdate": "2025-01-15T23:00:00.000Z",
+      "newsletter": true,
+      "id": 11
+    },
+    {
+      "name": "sgd",
+      "courseId": "_iL775j",
+      "birthdate": "2025-01-01T23:00:00.000Z",
+      "newsletter": false,
+      "id": 12
+    }
+  ]
+}

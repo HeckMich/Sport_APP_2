@@ -1,0 +1,10 @@
+button.active {
+    background-color: orange;
+}
+
+
+@media (min-width: 800px) {
+    .row {
+        min-height: 100px;
+    }
+  }

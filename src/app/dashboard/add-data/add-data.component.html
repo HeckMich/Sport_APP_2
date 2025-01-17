@@ -1,0 +1,82 @@
+<div class="row d-flex justify-content-center pt-5 pb-5">
+  <form [formGroup]="registrationForm" (ngSubmit)="onSubmit(content)"
+  class="registration-form col-12 col-md-6 d-flex justify-content-center flex-column bg-light-subtle p-5 rounded-4 m-0">
+    <h2>Zum Kurs anmelden!</h2>
+
+    <!-- Name -->
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Name</mat-label>
+      <input matInput placeholder="Name" formControlName="name" />
+      <mat-error *ngIf="registrationForm.get('name')?.hasError('required')">
+        Gib deinen Namen ein!
+      </mat-error>
+      <mat-error *ngIf="registrationForm.get('name')?.hasError('minlength')">
+        Der Name muss mindestens 2 Zeichen lang sein!
+      </mat-error>
+      <mat-error *ngIf="registrationForm.get('name')?.hasError('maxlength')">
+        Der Name darf maximal 15 Zeichen lang sein!
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Birthdate-->
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Geburtsdatum</mat-label>
+      <input matInput [matDatepicker]="picker" placeholder="Geburtsdatum" formControlName="birthdate" />
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+      <mat-error *ngIf="registrationForm.get('birthdate')?.hasError('required')">
+        Geben ein Geburtsdatum ein!
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Course -->
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Kurs auswählen</mat-label>
+      <mat-select formControlName="courseId">
+        <mat-option value="" disabled>Bitte auswählen</mat-option>
+        <mat-option *ngFor="let course of storeService.courses" [value]="course.id">
+          {{ course.name }}, {{ course.instructor }}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="registrationForm.get('courseId')?.hasError('required')">
+        Wählen Sie einen Kurs!
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Checkbox -->
+    <mat-checkbox formControlName="newsletter" class="full-width">
+      Ich möchte den Newsletter abonnieren.
+    </mat-checkbox>
+    <br/>
+
+    <!-- Button -->
+    <button mat-raised-button color="primary" type="submit" [disabled]="registrationForm.invalid">
+      Anmelden
+    </button>
+  </form>
+
+  <!-- MOdal -->
+  <ng-template #content let-modal>
+    <div class="modal-header bg-success">
+      <h4 class="modal-title">Vielen Dank für Ihre Anmeldung!</h4>
+      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body bg-success-subtle">
+      <h5>Details zu Ihrer Anmeldung:</h5>
+      <ul class="list-group">
+        <li class="list-group-item"><strong>Name:</strong> {{ submittedData.name }}</li>
+        <li class="list-group-item"><strong>Geburtsdatum:</strong> {{ submittedData.birthdate | date:"dd.MM.yyyy" }}
+        </li>
+        <li class="list-group-item"><strong>Kurs:</strong> {{ submittedData.course }}</li>
+        <li class="list-group-item"><strong>Newsletter abonniert:</strong> {{ submittedData.newsletter }}</li>
+      </ul>
+    </div>
+    <div class="modal-footer bg-success">
+      <button type="button" class="btn btn-primary" (click)="modal.close('Close click')">Schließen</button>
+    </div>
+  </ng-template>
+</div>
+<!-- BG img -->
+<div  id="addDataContainer">
+
+</div>
