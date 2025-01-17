@@ -10,5 +10,5 @@ import { SharedModule } from '../shared/shared.module';
   styleUrl: './header.component.css'
 })
 export class HeaderComponent {
-  public title: string = 'Stay Active, Stay Together';
+  public title: string = 'Sports Plaza';
 }
