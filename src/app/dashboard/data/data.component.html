@@ -52,16 +52,16 @@
     </div>
 
     <!-- Data -->
-    <div *ngFor="let registration of storeService.registrations" class="row py-2 d-flex justify-content-center">
+    <div *ngFor="let registration of storeService.registrations" class="row-container row py-2 d-flex justify-content-center" [class.loading]="isLoading">
       <div class="col-3 col-md-3 bg-dark-subtle border-bottom d-flex align-items-center ps-4">{{ registration.name }}</div>
       <div class="col-3 col-md-2 border-bottom d-flex align-items-center">{{ registration.birthdate | date:"dd.MM.yyyy"
         }}</div>
       <div class="col-3 col-md-3 border-bottom d-flex align-items-center">{{ registration.course.name }}</div>
       <div class="col-3 col-md-2 border-bottom d-flex align-items-center">{{ registration.newsletter ? "Ja" : "Nein" }}</div>
-      <div class="col-3 col-md-2 border-bottom d-flex align-items-center">
-        <button mat-raised-button color="warn" (click)="deleteRegistration(registration)"> Abmelden
-
-       </button>
+      <div class="row-container col-3 col-md-2 border-bottom d-flex align-items-center" >
+        <button mat-raised-button color="warn" (click)="deleteRegistration(registration)" [disabled]="isLoading">
+          <span *ngIf="!isLoading">Abmelden</span>  <mat-spinner *ngIf="isLoading" diameter="20"></mat-spinner>
+        </button>
       </div>
     </div>
 

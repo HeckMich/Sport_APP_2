@@ -4,11 +4,12 @@ import { StoreService } from '../../shared/store.service';
 import { BackendService } from '../../shared/backend.service';
 import {FormGroup} from "@angular/forms";
 import {Registration} from "../../shared/Interfaces/Registration";
+import {MatProgressSpinner} from "@angular/material/progress-spinner";
 
 @Component({
   selector: 'app-data',
   standalone: true,
-  imports: [SharedModule],
+  imports: [SharedModule, MatProgressSpinner],
   templateUrl: './data.component.html',
   styleUrl: './data.component.css'
 })
@@ -16,6 +17,8 @@ export class DataComponent {
 
   @Input() registration: any;
   @Output() registrationDeleted = new EventEmitter<string>();
+  isLoading = false; // Loading-Status für diese Reihe
+
 
   constructor(public storeService: StoreService, private backendService: BackendService) {}
 
@@ -37,6 +40,8 @@ export class DataComponent {
   }
 
   deleteRegistration(registration: Registration) {
+    this.isLoading = true; // Loading starten
+
     if (confirm("Möchten Sie diese Registrierung wirklich löschen?")) {
       this.backendService.deleteRegistration(registration.id).subscribe({
         next: (response) => {
@@ -49,11 +54,17 @@ export class DataComponent {
         },
         error: (error) => {
           console.error("Error deleting registration:", error);
+        },
+        complete: () => {
+          this.isLoading = false; // Loading beenden (immer, auch bei Fehlern)
         }
       });
-    }
+
+    }else {
+      this.isLoading = false;
   }
 
 
 
+}
 }

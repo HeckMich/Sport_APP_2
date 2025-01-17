@@ -8,3 +8,28 @@ button.active {
         min-height: 100px;
     }
   }
+
+.row-container {
+  position: relative; /* Wichtig für die Overlay-Positionierung */
+  display: inline-block; /* Oder display: flex; je nach Layout */
+}
+
+.row-container.loading {
+  opacity: 0.5; /* Optionale Abdunklung */
+  pointer-events: none; /* Deaktiviert Klicks */
+
+}
+
+.row-container.loading::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.5); /* Halbtransparenter Hintergrund */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1; /* Sicherstellen, dass das Overlay über dem Inhalt liegt */
+}
