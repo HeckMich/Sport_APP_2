@@ -78,18 +78,19 @@
       "id": 1
     },
     {
-      "name": "et",
-      "courseId": "_iL775i",
-      "birthdate": "2025-01-14T23:00:00.000Z",
-      "newsletter": false,
-      "id": 3
-    },
-    {
       "name": "etrz",
       "courseId": "_iL775i",
       "birthdate": "2025-01-01T23:00:00.000Z",
       "newsletter": false,
       "id": 4
+    },
+    {
+      "name": "sdgh",
+      "courseId": "_iL775i",
+      "birthdate": "2024-12-31T23:00:00.000Z",
+      "newsletter": true,
+      "registrationDate": "2025-01-19T16:08:03.484Z",
+      "id": 5
     }
   ]
 }

@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
-import { SharedModule } from '../../shared/shared.module';
-import { StoreService } from '../../shared/store.service';
-import { BackendService } from '../../shared/backend.service';
+import {SharedModule} from '../../shared/shared.module';
+import {StoreService} from '../../shared/store.service';
+import {BackendService} from '../../shared/backend.service';
 import {FormGroup} from "@angular/forms";
 import {Registration} from "../../shared/Interfaces/Registration";
 import {MatProgressSpinner} from "@angular/material/progress-spinner";
@@ -20,7 +20,8 @@ export class DataComponent {
   isLoading = false; // Loading-Status für diese Reihe
 
 
-  constructor(public storeService: StoreService, private backendService: BackendService) {}
+  constructor(public storeService: StoreService, private backendService: BackendService) {
+  }
 
   public page: number = 0;
 
@@ -34,8 +35,8 @@ export class DataComponent {
     var pagesCount = Math.ceil(this.storeService.registrationTotalCount / 4);
     let res = [];
     for (let i = 0; i < pagesCount; i++) {
-        res.push(i + 1);
-      }
+      res.push(i + 1);
+    }
     return res;
   }
 
@@ -60,11 +61,21 @@ export class DataComponent {
         }
       });
 
-    }else {
+    } else {
       this.isLoading = false;
+    }
+
+
   }
 
+  sortDirection: 'asc' | 'desc' = 'asc'; // Aktuelle Sortierrichtung
 
-
-}
+  sortByDate() {
+    this.sortDirection = this.sortDirection === 'asc' ? 'desc' : 'asc'; // Richtung wechseln
+    this.storeService.registrations.sort((a, b) => {
+      const dateA = new Date(a.registrationDate);
+      const dateB = new Date(b.registrationDate);
+      return this.sortDirection === 'asc' ? dateA.getTime() - dateB.getTime() : dateB.getTime() - dateA.getTime();
+    });
+  }
 }

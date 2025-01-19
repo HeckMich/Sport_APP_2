@@ -8,9 +8,12 @@
       <h2 class="col-12 col-md-10 text-center pb-0 pt-3 mb-0 bg-info-subtle rounded-top">Kursübersicht:</h2>
     </div>
     <div class="row font-weight-bold d-flex justify-content-center">
-      <div class="col-2 col-md-2 bg-secondary-subtle d-inline d-md-flex align-items-center  ps-4 rounded-start">Kurs</div>
+      <div class="col-2 col-md-2 bg-secondary-subtle d-inline d-md-flex align-items-center  ps-4 rounded-start">Kurs
+      </div>
       <div class="col-2 col-md-2 bg-dark-subtle d-inline d-md-flex align-items-center">Veranstaltungsort</div>
-      <div class="col-3 col-md-2 bg-secondary-subtle d-inline d-md-flex align-items-center">Adresse des Veranstaltungsortes</div>
+      <div class="col-3 col-md-2 bg-secondary-subtle d-inline d-md-flex align-items-center">Adresse des
+        Veranstaltungsortes
+      </div>
       <div class="col-1 col-md-1 bg-dark-subtle d-inline d-md-flex align-items-center">Öffentlich erreichbar?</div>
       <div class="col-1 col-md-1 bg-secondary-subtle d-inline d-md-flex align-items-center">Kursleiter</div>
       <div class="col-3 col-md-2 bg-dark-subtle d-inline d-md-flex align-items-center rounded-end">Alle Termine</div>
@@ -18,9 +21,12 @@
 
     <!-- Data -->
     <div *ngFor="let course of storeService.courses" class="row py-2 mb-4 d-flex justify-content-center">
-      <div class="col-2 col-md-2 bg-dark-subtle border-bottom d-inline d-md-flex align-items-center ps-4">{{ course.name }}</div>
-      <div class="col-2 col-md-2 border-bottom d-inline d-md-flex align-items-center">{{ course.eventLocation.name }}</div>
-      <div class="col-3 col-md-2 border-bottom d-inline d-md-flex align-items-center">{{ course.eventLocation.address }}</div>
+      <div
+        class="col-2 col-md-2 bg-dark-subtle border-bottom d-inline d-md-flex align-items-center ps-4">{{ course.name }}</div>
+      <div
+        class="col-2 col-md-2 border-bottom d-inline d-md-flex align-items-center">{{ course.eventLocation.name }}</div>
+      <div
+        class="col-3 col-md-2 border-bottom d-inline d-md-flex align-items-center">{{ course.eventLocation.address }}</div>
       <div class="col-1 col-md-1 border-bottom d-inline d-md-flex align-items-center">
         {{ course.eventLocation.publicTransport ? 'Ja' : 'Nein' }}
       </div>
@@ -44,23 +50,34 @@
       <h2 class="col-12 col-md-10 text-center pb-0 pt-3 mb-0 bg-info-subtle rounded-top">Anmeldungen:</h2>
     </div>
     <div class="row font-weight-bold d-flex justify-content-center">
-      <div class="col-3 col-md-3 bg-secondary-subtle d-flex align-items-center rounded-start ps-4">Name</div>
+      <div class="col-3 col-md-2 bg-secondary-subtle d-flex align-items-center rounded-start ps-4">Name</div>
       <div class="col-3 col-md-2 bg-dark-subtle d-flex align-items-center ">Geburtsdatum</div>
-      <div class="col-3 col-md-3 bg-secondary-subtle d-flex align-items-center rounded-end">Kurs</div>
+      <div class="col-3 col-md-2 bg-secondary-subtle d-flex align-items-center rounded-end">Kurs</div>
       <div class="col-3 col-md-2 bg-dark-subtle d-flex align-items-center rounded-end">Newsletter</div>
+      <div class="col-3 col-md-2 bg-secondary-subtle d-flex align-items-center" (click)="sortByDate()"
+           style="cursor: pointer;">Anmeldedatum
+        <span *ngIf="sortDirection === 'asc'">&#9650;</span><span *ngIf="sortDirection === 'desc'">&#9660;</span>
+      </div>
       <div class="col-3 col-md-2 bg-secondary-subtle d-flex align-items-center rounded-end">Aktion</div>
     </div>
 
     <!-- Data -->
-    <div *ngFor="let registration of storeService.registrations" class="row-container row py-2 d-flex justify-content-center" [class.loading]="isLoading">
-      <div class="col-3 col-md-3 bg-dark-subtle border-bottom d-flex align-items-center ps-4">{{ registration.name }}</div>
-      <div class="col-3 col-md-2 border-bottom d-flex align-items-center">{{ registration.birthdate | date:"dd.MM.yyyy"
+    <div *ngFor="let registration of storeService.registrations"
+         class="row-container row py-2 d-flex justify-content-center" [class.loading]="isLoading">
+      <div
+        class="col-3 col-md-2 bg-dark-subtle border-bottom d-flex align-items-center ps-4">{{ registration.name }}</div>
+      <div
+        class="col-3 col-md-2 border-bottom d-flex align-items-center">{{ registration.birthdate | date:"dd.MM.yyyy"
         }}</div>
-      <div class="col-3 col-md-3 border-bottom d-flex align-items-center">{{ registration.course.name }}</div>
-      <div class="col-3 col-md-2 border-bottom d-flex align-items-center">{{ registration.newsletter ? "Ja" : "Nein" }}</div>
-      <div class="row-container col-3 col-md-2 border-bottom d-flex align-items-center" >
+      <div class="col-3 col-md-2 border-bottom d-flex align-items-center">{{ registration.course.name }}</div>
+      <div
+        class="col-3 col-md-2 border-bottom d-flex align-items-center">{{ registration.newsletter ? "Ja" : "Nein" }}</div>
+      <div
+        class="col-2 col-md-2 border-bottom d-flex align-items-center">{{ registration.registrationDate | date:"dd.MM.yyyy HH:mm" }}</div>
+      <div class="row-container col-3 col-md-2 border-bottom d-flex align-items-center">
         <button mat-raised-button color="warn" (click)="deleteRegistration(registration)" [disabled]="isLoading">
-          <span *ngIf="!isLoading">Abmelden</span>  <mat-spinner *ngIf="isLoading" diameter="20"></mat-spinner>
+          <span *ngIf="!isLoading">Abmelden</span>
+          <mat-spinner *ngIf="isLoading" diameter="20"></mat-spinner>
         </button>
       </div>
     </div>
