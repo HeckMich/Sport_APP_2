@@ -7,5 +7,6 @@ export interface Registration {
     course: Course;
     courseId: number;
     newsletter: boolean;
+    email: string;
     registrationDate: Date;
   }

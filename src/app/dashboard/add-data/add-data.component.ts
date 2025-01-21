@@ -26,9 +26,10 @@ export class AddDataComponent implements OnInit {
 
   ngOnInit(): void {
     this.registrationForm = this.formBuilder.group({
-      name: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(15)]],
+      name: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(25)]],
       courseId: ['', Validators.required],
       birthdate: [null, [Validators.required]],
+      email: ['', [Validators.required, Validators.email]],
       newsletter: [false]
     });
   }

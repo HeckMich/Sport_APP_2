@@ -43,6 +43,18 @@
       </mat-error>
     </mat-form-field>
 
+    <!--Email-->
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Email-Adresse</mat-label>
+      <input matInput type="email" placeholder="Email-Adresse" formControlName="email" required />
+      <mat-error *ngIf="registrationForm.get('email')?.hasError('required')">
+        Bitte geben Sie Ihre E-Mail-Adresse ein!
+      </mat-error>
+      <mat-error *ngIf="registrationForm.get('email')?.hasError('email')">
+        Die E-Mail-Adresse ist ungültig!
+      </mat-error>
+    </mat-form-field>
+
     <!-- Checkbox -->
     <mat-checkbox formControlName="newsletter" class="full-width">
       <span style="color: orange;">✉</span> Ich möchte den <span style="color: orange;">Newsletter</span> abonnieren.
