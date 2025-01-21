@@ -14,10 +14,10 @@ import {MatProgressSpinner} from "@angular/material/progress-spinner";
   styleUrl: './data.component.css'
 })
 export class DataComponent {
-
   @Input() registration: any;
   @Output() registrationDeleted = new EventEmitter<string>();
   isLoading = false; // Loading-Status für diese Reihe
+  loadingId: string = "";
 
 
   constructor(public storeService: StoreService, private backendService: BackendService) {
@@ -42,6 +42,7 @@ export class DataComponent {
 
   deleteRegistration(registration: Registration) {
     this.isLoading = true; // Loading starten
+    this.loadingId = registration.id;
 
     if (confirm("Möchten Sie diese Registrierung wirklich löschen?")) {
       this.backendService.deleteRegistration(registration.id).subscribe({
@@ -58,11 +59,13 @@ export class DataComponent {
         },
         complete: () => {
           this.isLoading = false; // Loading beenden (immer, auch bei Fehlern)
+          this.loadingId = "";
         }
       });
 
     } else {
       this.isLoading = false;
+      this.loadingId = "";
     }
 
 

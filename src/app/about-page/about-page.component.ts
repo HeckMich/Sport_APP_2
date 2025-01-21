@@ -8,9 +8,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./about-page.component.css']
 })
 export class AboutPageComponent implements OnInit {
-  bees: string = '';
+  pillars: string = '';
 
   ngOnInit(): void {
-    this.bees = '🐝'.repeat(100000);
   }
 }
