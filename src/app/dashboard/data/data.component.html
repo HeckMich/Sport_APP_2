@@ -58,12 +58,13 @@
            style="cursor: pointer;">Anmeldedatum
         <span *ngIf="sortDirection === 'asc'">&#9650;</span><span *ngIf="sortDirection === 'desc'">&#9660;</span>
       </div>
-      <div class="col-3 col-md-2 bg-secondary-subtle d-flex align-items-center rounded-end">Aktion</div>
+      <div class="col-3 col-md-2 bg-dark-subtle d-flex align-items-center rounded-end">Aktion</div>
     </div>
 
     <!-- Data -->
     <div *ngFor="let registration of storeService.registrations"
-         class="row-container row py-2 d-flex justify-content-center" [class.loading]="isLoading">
+         class="row-container  row py-2 d-flex justify-content-center" [class.loading]="isLoading" [ngClass]="loadingId == registration.id ? 'loadingRow' : ''">
+      <mat-spinner style="position: absolute; top: 30%;" *ngIf="loadingId == registration.id" diameter="40"></mat-spinner>
       <div
         class="col-3 col-md-2 bg-dark-subtle border-bottom d-flex align-items-center ps-4">{{ registration.name }}</div>
       <div
@@ -76,8 +77,8 @@
         class="col-2 col-md-2 border-bottom d-flex align-items-center">{{ registration.registrationDate | date:"dd.MM.yyyy HH:mm" }}</div>
       <div class="row-container col-3 col-md-2 border-bottom d-flex align-items-center">
         <button mat-raised-button color="warn" (click)="deleteRegistration(registration)" [disabled]="isLoading">
-          <span *ngIf="!isLoading">Abmelden</span>
-          <mat-spinner *ngIf="isLoading" diameter="20"></mat-spinner>
+          <span *ngIf="loadingId != registration.id">Abmelden</span>
+          <mat-spinner *ngIf="loadingId == registration.id" diameter="20"></mat-spinner>
         </button>
       </div>
     </div>
@@ -100,3 +101,4 @@
     </div>
   </div>
 </div>
+

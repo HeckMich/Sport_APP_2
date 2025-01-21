@@ -14,13 +14,15 @@ button.active {
   display: inline-block; /* Oder display: flex; je nach Layout */
 }
 
-.row-container.loading {
+.loadingRow{
   opacity: 0.5; /* Optionale Abdunklung */
   pointer-events: none; /* Deaktiviert Klicks */
 
 }
 
-.row-container.loading::before {
+
+
+.loadingRow::before {
   content: '';
   position: absolute;
   top: 0;
@@ -32,4 +34,8 @@ button.active {
   justify-content: center;
   align-items: center;
   z-index: 1; /* Sicherstellen, dass das Overlay über dem Inhalt liegt */
+}
+
+.loadingRow{
+  background-color: red !important;
 }
