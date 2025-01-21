@@ -69,5 +69,51 @@
       "venueByPublicTansport": true
     }
   ],
-  "registrations": []
+  "registrations": [
+    {
+      "name": "Max Scherzer",
+      "courseId": "_iL775j",
+      "birthdate": "1984-07-26T22:00:00.000Z",
+      "email": "max.scherzer@nats.us",
+      "newsletter": true,
+      "registrationDate": "2025-01-21T13:50:37.366Z",
+      "id": 3
+    },
+    {
+      "name": "Tyler Glasnow",
+      "courseId": "_iL775j",
+      "birthdate": "1993-08-22T22:00:00.000Z",
+      "email": "tyler@dodgers.com",
+      "newsletter": false,
+      "registrationDate": "2025-01-21T13:51:20.485Z",
+      "id": 4
+    },
+    {
+      "name": "Michael Conforto",
+      "courseId": "_iL775i",
+      "birthdate": "1993-02-28T23:00:00.000Z",
+      "email": "confort@mets.us",
+      "newsletter": true,
+      "registrationDate": "2025-01-21T13:52:45.333Z",
+      "id": 5
+    },
+    {
+      "name": "Brandon Nimmo",
+      "courseId": "_iL775i",
+      "birthdate": "1993-03-26T23:00:00.000Z",
+      "email": "nimmo@mets.com",
+      "newsletter": true,
+      "registrationDate": "2025-01-21T13:53:31.161Z",
+      "id": 6
+    },
+    {
+      "name": "Pete Alonso",
+      "courseId": "_iL775i",
+      "birthdate": "1994-12-06T23:00:00.000Z",
+      "email": "pete@mets.com",
+      "newsletter": true,
+      "registrationDate": "2025-01-21T13:54:06.815Z",
+      "id": 7
+    }
+  ]
 }
